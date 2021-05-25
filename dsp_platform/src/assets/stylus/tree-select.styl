@@ -1,0 +1,93 @@
+.appTreeSelect{
+	display:inline-block
+    vertical-align: middle
+	&.appTreeSelect-small{
+		.vue-treeselect__menu-container{
+			width 100%
+		}
+	}
+	.vue-treeselect__placeholder, .vue-treeselect__single-value{
+		line-height 32px
+	}
+	.vue-treeselect__menu{
+		width: 100%
+	}
+	.vue-treeselect__menu-container{
+		width 375px
+	}
+	.vue-treeselect__multi-value-item-container{
+		padding-top 4px
+	}
+	.vue-treeselect__limit-tip{
+		padding-top 4px
+	}
+	.vue-treeselect__control{
+		display block
+		height 32px
+		overflow hidden
+		border-radius 2px
+	}
+	.vue-treeselect__value-container{
+		height 32px
+	}
+	.vue-treeselect__multi-value{
+		margin-bottom 0px
+		height 32px
+		display flex
+	}
+
+	.vue-treeselect__input-container {
+		height 32px
+		box-sizing content-box
+		line-height 32px
+		padding-top 0px !important
+		flex 1
+		.vue-treeselect__input {
+			width 100% !important
+		}
+	}
+	.vue-treeselect__multi-value-label{
+		max-width  85px
+		overflow: hidden
+		text-overflow:ellipsis
+		white-space: nowrap
+		div{
+			max-width   80px
+			overflow: hidden
+			text-overflow:ellipsis
+			white-space: nowrap
+		}
+	}
+	.vue-treeselect__x-container{
+		padding-right  10px
+	}
+	.label_checkout{
+		display inline-block
+		height: 32px
+		line-height 32px
+		.checkbox_content{
+			display flex
+			justify-content space-between
+			width 320px
+			color #333333
+			line-height 32px
+			margin 0px 5px
+			box-sizing content-box
+			vertical-align middle
+			.checkbox_name{
+				width 180px
+				overflow: hidden
+				text-overflow:ellipsis
+				white-space: nowrap
+			}
+			.checkbox_active{
+				width 130px
+				text-align right
+				overflow: hidden
+				text-overflow:ellipsis
+				white-space: nowrap
+			}
+		}
+	}
+}
+

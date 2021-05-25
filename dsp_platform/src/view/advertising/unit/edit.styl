@@ -1,0 +1,280 @@
+.edit-content-card {
+  .appDetail {
+    .unitContent {
+      border-bottom 1px solid #EBEBEB
+      margin-bottom 15px
+      &:last-child{
+        margin-bottom: 0px
+      }
+      .xuan{
+        width: 60px;
+        height: 32px;
+        background: #F2F4FF;
+        border-radius: 4px;
+        border 0px
+        color: #333333
+      }
+      .xuan_a{
+        color: #465CFE
+        font-weight 500
+        font-size 14px
+        margin-left 26px
+      }
+      .title-line-tag {
+        color #333333
+        font-size 16px
+        margin-bottom 10px
+        font-weight bold
+      }
+      .assignTime{
+        display flex
+        justify-content space-between
+        margin-top 10px
+        .time_select{
+          width 375px
+          background: #FFFFFF;
+          border: 1px solid #EBEBEB;
+          border-radius: 4px;
+          .header{
+            display flex
+            justify-content space-between
+            padding  0 10px
+            height 32px
+            line-height 32px
+            background: #FAFAFA;
+            border-radius: 4px 4px 0px 0px;
+          }
+          .time_content{
+            max-height 280px
+            overflow auto
+            .time_list{
+              display flex
+              background: #F5F5F5;
+              border-radius: 4px;
+              line-height 25px
+              margin  10px
+              padding 4px
+              .time_title{
+                display inline-block
+                width 55px
+                color #999999
+                margin-left 10px
+              }
+              .time_data{
+                display inline-block
+                width 360px
+              }
+            }
+            .no_data{
+              text-align center
+              .icon{
+                font-size 60px
+                color #EBEBEB
+                margin-top 80px
+              }
+              p{
+                color:#999999
+                font-size 14px
+              }
+
+            }
+          }
+        }
+      }
+      .unitForm {
+        .formInput {
+          width 600px
+        }
+      }
+
+      /deep/ .ivu-form-item {
+        .ivu-input {
+          background #ffffff
+        }
+        .ivu-checkbox-wrapper-checked.ivu-checkbox-border{
+          background: #F2F4FF;
+          border: 1px solid #465CFE;
+          color #465CFE
+          box-shadow none
+        }
+        .ivu-input-group-prepend {
+          background #ffffff
+        }
+
+        .ivu-radio-group-button .ivu-radio-wrapper {
+          background: #FAFAFA;
+        }
+
+        .ivu-radio-group-button .ivu-radio-wrapper-checked {
+          background: #F2F4FF;
+          border: 1px solid #465CFE;
+          color #465CFE
+          box-shadow none
+        }
+
+        .ivu-radio-group-button .ivu-radio-wrapper-checked:before {
+          background transparent;
+          left 0px
+        }
+      }
+    }
+  }
+
+}
+
+.scene-card-disabled
+  .scene-child
+    cursor: no-drop !important
+.style-card-disabled
+  .style-child
+    cursor: no-drop  !important
+.ad-right-content{
+  width: 244px;
+  height: 416px;
+  margin-left 10px
+  border-radius: 14px;
+
+  h3 {
+    font-size: 14px
+    line-height: 30px
+    font-weight: 600
+    text-align: center
+    margin-bottom: 28px
+  }
+}
+.scene-card
+  width 340px
+  margin-right 10px
+  .scene-child
+    cursor: pointer
+    display: inline-block
+    width: 340px
+    height: 70px;
+    border-bottom: 1px solid #EFEFEF
+    border-right: 1px solid #EFEFEF
+    border-left: 1px solid #EFEFEF
+    position: relative
+    &:hover
+      background-color: #F2F4FF
+    &:nth-child(1), &:nth-child(2), &:nth-child(3)
+      border-top: 1px solid #EFEFEF
+    &.active
+      background-color: #F2F4FF
+      border-bottom: 1px solid #465CFE
+      border-right: 1px solid #465CFE
+      h4
+        font-weight:bold
+      &:after
+        content:''
+        position: absolute
+        left: -1px
+        top: 0px
+        width: 0px
+        height: 100%
+        border-right: 1px solid #465CFE
+      &:before
+        content:''
+        position: absolute
+        left: 0px
+        top: -1px
+        width: 100%
+        height: 0px
+        border-bottom: 1px solid #465CFE
+    .scene-icon
+      display: inline-block
+      width: 35px
+      margin-left 15px
+      vertical-align: middle
+      text-align: center
+      line-height 70px
+      img
+        vertical-align: middle
+        height 40px
+    .scene-intro
+      margin-left: 10px
+      display: inline-block
+      vertical-align: middle
+    h4
+      font-weight: normal
+      height: 20px
+      font-size: 12px
+      color #333333
+      line-height: 20px
+      margin-top 4px
+    p
+      margin-top: 4px
+      font-size: 12px
+      font-weight: 400
+      max-width 250px
+      white-space:nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #8E9197
+      line-height: 18px
+  .scene-card-disabled
+    .scene-child
+      cursor: no-drop
+.style-child
+  cursor: pointer
+  display: inline-block
+  width: 133px
+  font-size: 0px
+  height 84px
+  border-bottom: 1px solid #EFEFEF
+  border-right: 1px solid #EFEFEF
+  border-left: 1px solid #EFEFEF
+  position: relative
+  text-align: center
+  &.active
+    background-color: #F2F4FF
+    border-bottom: 1px solid #465CFE
+    border-right: 1px solid #3F83F7
+    h4
+      font-weight:bold
+    &:after
+      content:''
+      position: absolute
+      left: -1px
+      top: 0px
+      width: 0px
+      height: 100%
+      border-right: 1px solid #3F83F7
+    &:before
+      content:''
+      position: absolute
+      left: 0px
+      top: -1px
+      width: 100%
+      height: 0px
+      border-bottom: 1px solid #3F83F7
+  &:hover
+    background-color: #F2F4FF
+    h4
+      font-weight: bold
+  &:nth-child(3n + 1)
+    border-left: 1px solid #EFEFEF
+  &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4)
+    border-top: 1px solid #EFEFEF
+  .style-icon
+    text-align: center
+    height: 40px
+    margin:5px auto 5px
+    img
+      max-height: 100%
+      vertical-align: middle
+      max-width:100%
+  .style-intro
+    margin-top: 4px
+  h4
+    font-weight: normal
+    height: 20px
+    font-size: 12px
+    line-height: 20px
+  p
+    margin-top: 4px
+    font-size: 12px
+    font-weight: 400
+    color: #999999
+    height: 18px
+    line-height: 18px
+    overflow: hidden
