@@ -1,0 +1,970 @@
+/*清除浮动*/
+.clearfix
+	zoom: 1
+
+.clearfix:after
+	content: ""
+	display: block
+	clear: both
+
+.fl
+	display: inline
+	float: left
+
+.fr
+	display: inline
+	float: right
+
+.mar-bot-10
+	vertical-align: top;
+	margin-bottom: 10px;
+
+.i-margin-right-11
+	margin-right: 7px
+
+.i-width-input
+	width: 180px
+
+.i-width-input-small
+	width: 152px
+
+.marginTop10
+	margin-top: 10px
+
+.i-width-select
+	width: 200px
+
+.i-width-status
+	width: 100px
+
+.i-width-date
+	width: 210px
+
+.i-width-time
+	width: 120px
+
+.i-width-picker
+	width: 80px
+
+.i-width-input-long
+	width: 250px
+
+.i-width-checkbtn
+	width: 100px
+	text-align: center
+	
+.i-width-normal
+	width: 218px
+	
+.ivu-btn
+	&:focus
+		box-shadow: none
+
+.ivu-btn-text
+	&:hover
+		background-color: inherit
+
+.ivu-input
+	&:focus
+		box-shadow: none !important
+
+.login-card
+	.ivu-input
+		&:focus
+			border: 1px solid #dcdee2 !important
+
+		&:hover
+			border: 1px solid #dcdee2 !important
+
+.ivu-select-selection
+	box-shadow: none !important
+
+.has-table-card
+	.ivu-card-body
+		padding: 15px 20px
+
+.ivu-card-body
+	padding: 15px 25px
+
+.search-line
+	margin-bottom: 5px
+
+	.search
+		background #fafafa
+
+.page-title
+	font-size: 0px
+	height: 32px
+
+	h2
+		display: inline-block
+		vertical-align: top
+		font-size: 18px
+
+	h6.title-small-tips
+		font-size: 12px
+		color: #787878
+		line-height: 32px
+		margin-left: 8px
+		font-weight: normal
+		display: inline-block
+		vertical-align: top
+
+	&.page-has-line
+		margin-bottom: 12px
+
+		h2
+			height: 32px
+			line-height: 32px
+
+	.nav-tab
+		margin-left: 20px
+		display: inline-block
+		vertical-align: top
+		color: #4083F8
+		font-size: 13px
+
+		.is-echart, .is-table
+			display: inline-block
+			vertical-align: top
+			cursor: pointer
+
+		.iconfont
+			font-size: 12px
+			margin-right: 4px
+
+	.is-handler
+		float: right
+
+		button
+			margin-left: 10px
+
+			.icon
+				margin-right: 8px
+
+			&.host
+				background-color: #D9E6FF
+				color: #3F83F7
+
+			&.has-img-icon
+				.is-handler-icon
+					margin-right: 4px
+					display: inline-block
+					vertical-align: middle
+					width: 16px
+					height: 16px
+					background-repeat: no-repeat
+					background-position: 0 0
+					background-size: cover
+
+				&:hover
+					background-color: #FFF
+
+				.batch
+					background-image: url('~@/assets/image/icon/set_no.png')
+
+				.column
+					background-image: url('~@/assets/image/icon/col_no.png')
+
+				.batch-open
+					vertical-align: -3px
+					background-image: url('~@/assets/image/icon/kaiqi_no.png')
+
+				.batch-close
+					vertical-align: -3px
+					background-image: url('~@/assets/image/icon/stop_no.png')
+					
+				.batch-add
+					vertical-align: -3px
+					background-image: url('~@/assets/image/icon/new-add.png')
+				.download
+					vertical-align: -3px
+					background-image: url('~@/assets/image/icon/download.png')
+
+				&:hover
+					.batch
+						background-image: url('~@/assets/image/icon/set_sel.png')
+
+					.column
+						background-image: url('~@/assets/image/icon/col_sel.png')
+
+					.batch-open
+						background-image: url('~@/assets/image/icon/kaiqi_sel.png')
+
+					.batch-close
+						background-image: url('~@/assets/image/icon/stop_sel.png')
+						
+					.batch-add
+						background-image: url('~@/assets/image/icon/new-add-hover.png')
+					
+					.download
+						background-image: url('~@/assets/image/icon/download-hover.png')
+		.down
+			.icon-download
+				margin-right: -4px
+				vertical-align: middle
+
+			.icon-custom-column
+				margin-right: 4px
+
+		.normal
+			background-color: #FFF
+			color: #465CFE
+			border: 1px solid #FFF
+
+		.ivu-icon-md-help-circle
+			font-size: 16px
+			color: #918f8f
+
+		.top_text
+			font-size 12px
+			font-weight normal
+			line-height 20px
+
+.page-detail-title
+	border-bottom: 1px solid #F2F2F2
+	padding-bottom: 20px
+	margin-bottom: 20px
+
+	h2
+		line-height: 30px
+		display: inline-block
+		vertical-align: top
+		font-size: 18px
+
+	.is-handler
+		float: right
+
+		button
+			&.back
+				height: 30px
+				line-height: 30px
+				padding: 0px
+				text-align: right
+
+				.icon-rightarrow
+					margin-left: 4px
+					font-size: 12px
+
+.title-line-tag
+	padding-left: 12px
+	position: relative
+
+	&:before
+		content: ''
+		position: absolute
+		top: 50%
+		left: 0px
+		width: 5px
+		height: 18px
+		margin-top: -9px
+		background-color: #465CFE
+		background: -moz-linear-gradient(top, rgba(70, 92, 254, 1) 0%, rgba(255, 255, 255, 0) 100%)
+		background: -webkit-linear-gradient(top, rgba(70, 92, 254, 1) 0%, rgba(255, 255, 255, 0) 100%)
+		background: linear-gradient(to bottom, rgba(70, 92, 254, 1) 0%, rgba(255, 255, 255, 0) 100%)
+		border-radius: 3px
+
+.ivu-layout
+	background-color: transparent
+
+.ivu-layout-header
+	position: fixed
+	z-index: 12
+	left: 0px
+	top: 0px
+	width: 100%
+	box-sizing: border-box
+	padding: 0 20px 0 0px
+	height: 56px
+	line-height: 56px
+	color: #FFF
+	background-color: #182D42
+	box-shadow: 0px 0px 10px 0px rgba(24, 45, 66, 0.2)
+
+.left-bar
+	.ivu-layout-sider-children
+		overflow-x: hidden
+		overflow-y: scroll
+		margin-right: -18px
+		padding-bottom: 48px
+
+	.ivu-layout-sider-trigger
+		box-shadow: -1px -1px 5px 0px rgba(24, 45, 66, 0.1);
+		background-color: #FFF
+
+		.iconfont
+			color: #333333
+
+		&:hover
+			background-color: #F2F4FF
+
+			.iconfont
+				color: #4665FE
+
+.left-bar-dropmenu
+	min-width: 120px
+
+	.ivu-dropdown-item
+		font-size: 12px !important
+		display: flex
+		justify-content: space-between
+		align-items: center
+
+		&:hover
+			color: #4083F8
+
+		.iconfont
+			height: 16px
+			line-height: 16px
+			font-size: 12px
+			transform: scale(0.8) translateY(2px)
+
+.side-menu-wrapper
+	margin-top 18px
+	user-select: none
+
+	.in-title
+		display: inline
+		float: left
+		line-height: 14px
+
+	.left-bar-icon
+		margin-right: 15px
+		display: inline
+		float: left
+		width: 14px
+		height: 14px
+		vertical-align: middle
+		background-size: 14px 14px
+		background-repeat: no-repeat
+		background-position: center center
+
+		&.home-tag
+			background-image: url('~@/assets/image/left-bar/home-tag.png')
+
+		&.financial-tag
+			background-image: url('~@/assets/image/left-bar/financial-tag.png')
+
+		&.doc-tag
+			background-image: url('~@/assets/image/left-bar/doc-tag.png')
+
+		&.put-tag
+			background-image: url('~@/assets/image/left-bar/put-tag.png')
+
+		&.data-tag
+			background-image: url('~@/assets/image/left-bar/data-tag.png')
+
+		&.tool-tag
+			background-image: url('~@/assets/image/left-bar/tool-tag.png')
+
+		&.account-tag
+			background-image: url('~@/assets/image/left-bar/account-tag.png')
+
+		&.doc-tag
+			background-image: url('~@/assets/image/left-bar/doc-tag.png')
+
+		&.staff-tag
+			background-image: url('~@/assets/image/left-bar/staff-tag.png')
+			
+		&.audit-tag
+			background-image: url('~@/assets/image/left-bar/audit-tag.png')
+			
+		&.notice-tag
+			background-image: url('~@/assets/image/left-bar/notice-tag.png')
+
+	.ivu-menu-item-selected, .ivu-menu-item:hover, .ivu-menu-submenu-title:hover, .ivu-tooltip-rel:hover, .ivu-dropdown-rel:hover
+		.home-tag
+			background-image: url('~@/assets/image/left-bar/home-tag-hover.png')
+
+		.financial-tag
+			background-image: url('~@/assets/image/left-bar/financial-tag-hover.png')
+
+		.doc-tag
+			background-image: url('~@/assets/image/left-bar/doc-tag-hover.png')
+
+		.put-tag
+			background-image: url('~@/assets/image/left-bar/put-tag-hover.png')
+
+		.data-tag
+			background-image: url('~@/assets/image/left-bar/data-tag-hover.png')
+
+		.tool-tag
+			background-image: url('~@/assets/image/left-bar/tool-tag-hover.png')
+
+		.account-tag
+			background-image: url('~@/assets/image/left-bar/account-tag-hover.png')
+
+		.doc-tag
+			background-image: url('~@/assets/image/left-bar/doc-tag-hover.png')
+
+		.staff-tag
+			background-image: url('~@/assets/image/left-bar/staff-tag-hover.png')
+			
+		.audit-tag
+			background-image: url('~@/assets/image/left-bar/audit-tag-hover.png')
+
+		.notice-tag
+			background-image: url('~@/assets/image/left-bar/notice-tag-hover.png')
+
+	.ivu-menu
+		min-width: 140px
+
+	.ivu-menu-submenu
+		.ivu-menu-item
+			padding: 9px 12px 9px 49px !important
+
+			span
+				display: block
+				line-height: 14px
+
+	.ivu-menu-item, .ivu-menu-submenu-title
+		padding: 15px 20px
+
+		.ivu-menu-submenu-title-icon
+			margin-right: 0px
+			right 20px
+			text-align: right
+
+	.ivu-menu-light
+		& > .ivu-menu-item, .ivu-menu-submenu-title
+			font-weight: bold
+			overflow: hidden
+
+	.menu-collapsed
+		.ivu-dropdown
+			width: 100%
+
+		.ivu-dropdown-rel a
+			width: 100%
+
+		.ivu-tooltip
+			width: 100%
+
+			.ivu-tooltip-rel
+				width: 100%
+
+		.ivu-tooltip-popper .ivu-tooltip-content
+			.ivu-tooltip-arrow
+				border-right-color: #fff
+
+			.ivu-tooltip-inner
+				background: #fff
+				color: #495060
+
+	a.drop-menu-a
+		display: inline-block
+		font-size: 0px
+		padding: 10px 15px
+		width: 100%
+		text-align: center
+
+		&:hover
+			background-color: #F2F5F8
+
+			.iconfont
+				color: #4083F8
+
+		.left-bar-icon
+			float: inherit
+			margin-right: 0px
+			display: inline-block
+			background-size: 14px 14px
+			height: 25px
+			width: 25px
+
+.ivu-menu-light.ivu-menu-vertical
+	.ivu-menu-item-active:not(.ivu-menu-submenu)
+		background: #F2F5F8
+
+		&:after
+			display: none
+
+.ivu-menu-vertical
+	&.ivu-menu-light
+		&:after
+			display: none
+
+.page-center
+	margin-top: 10px
+	text-align: center
+	height: 32px
+	line-height: 32px
+
+.console-table
+	.ivu-table-tbody
+		.text-row-ellipsis
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			word-break: break-word;
+			max-height: 45px;
+
+	.ivu-btn-text
+		color: #465CFE !important
+		padding: 0
+
+		&:hover
+			background-color: transparent
+
+		&:focus
+			box-shadow: none
+			
+	.ivu-checkbox-inner
+		width 14px
+		height 14px
+
+	.ivu-checkbox-checked .ivu-checkbox-inner:after 
+		top: 1px
+		left 4px
+
+.action-handle
+	.iconfont
+		cursor: pointer
+		display: inline-block
+		vertical-align: middle
+		width: 30px
+		height: 30px
+		line-height: 30px
+		color: #666
+		font-size: 12px
+		text-align: center
+
+		&:hover
+			color: #465CFE
+
+		&.icon-detail
+			font-size: 14px
+
+		&.icon-data
+			font-size: 15px
+
+.nav-handle-group
+	margin-top: 15px
+
+.edit-content-card
+	background #ffffff
+	padding: 20px 25px
+	border-radius: 4px
+
+.private-check-card
+	label.ivu-checkbox-wrapper, label.ivu-radio-wrapper
+		border-radius: 0px !important
+		width: 100px
+		box-sizing: border-box
+		height: 34px
+		line-height: 34px
+		text-align: center
+		background-color: #F9F9F9
+
+	&.ivu-checkbox-group
+		font-size: 0px
+		line-height: normal
+
+		label
+			position: relative
+			margin-right: 0px
+			border-radius: 0
+
+		.ivu-checkbox-wrapper
+			&.no
+				&:after
+					display: none
+			&:after
+				position: absolute
+				right: -1px
+				top: -1px
+				content: ''
+				width 20px
+				height 20px
+				background url("~@/assets/image/icon/checkout_no.png") no-repeat center
+				background-size cover
+
+		.ivu-checkbox-wrapper-checked
+			&:after
+				background url("~@/assets/image/icon/checkout_sel.png") no-repeat center
+				background-size cover
+
+	.ivu-checkbox-inner
+		display: none
+
+
+.vertical-center-modal
+	display: flex
+	align-items: center
+	justify-content: center
+
+	.ivu-modal
+		top: 0
+
+.drawer-center
+	padding: 10px
+	overflow-x: hidden
+	overflow-y: scroll
+
+.drawer-footer
+	width: 100%
+	position: absolute
+	bottom: 0
+	left: 0
+	padding: 10px 16px
+	text-align: center
+	background: #fff
+	box-shadow: 0px -2px 15px 0px rgba(0, 0, 0, 0.05);
+
+	button
+		width: 100px
+		margin: 0 20px
+
+.select-tree
+	.vue-treeselect__control
+		border-radius: 2px
+		box-sizing: border-box
+		height: 32px
+
+.ivu-modal-confirm
+	.ivu-modal-confirm-head
+		display: flex
+
+	.ivu-modal-confirm-head-icon-confirm
+		.ivu-icon
+			display: block
+
+.ivu-table
+	th
+		background-color: #F2F4FF
+
+	.ivu-table-cell
+		padding: 0 8px 0 10px
+
+	.ivu-table-row
+		td
+			height: 45px
+			padding: 0
+
+	td.ivu-table-expanded-cell
+		padding: 10px 30px
+		background-color: #EBEBEB
+
+		.ivu-table-cell
+			padding: 0 8px
+
+	.tip-row-line
+		font-size: 12px
+		height: 18px
+		line-height: 18px
+		overflow: hidden
+		text-overflow: ellipsis
+		white-space: nowrap
+		color: #999
+
+.ivu-poptip-rel
+	.icon-why
+		color: #999
+		cursor: pointer
+
+.upload-img-format-tips
+	color: #999999
+	line-height: 20px
+	margin-top: 10px
+	font-size: 12px
+
+.name-row-ellipsis
+	height: 20px
+	line-height: 20px
+	overflow: hidden
+	text-overflow: ellipsis
+	white-space: nowrap
+
+.ivu-drawer-content
+	.ivu-drawer-body
+		padding-top: 30px
+		padding-left: 25px
+		padding-right: 25px
+
+	.ivu-drawer-header-inner
+		font-weight: bold
+
+.custom-drawer
+	.ivu-drawer-header
+		padding: 0px
+		box-shadow: 0px 2px 6px 0px rgba(12, 22, 33, 0.05)
+
+	.draw-header-img
+		font-size: 0px
+
+		img
+			height: 56px
+
+	.draw-header-title
+		padding-left: 25px
+
+		h3
+			line-height: 56px
+			font-size: 16px
+	.down-export
+		height: 32px
+		line-height: 32px
+		text-align: center
+		font-size: 14px
+		background-color: #F2F4FF
+		margin-bottom: 24px
+		a
+			margin-left: 10px
+			.iconfont
+				color: #465CFE
+	.upload-inner
+		padding: 40px 20px
+		display: flex
+		align-items: center
+		justify-content: center
+		.icon-box
+			.iconfont
+				font-size: 48px
+				color: #4665FE
+	.upload-txt
+		margin-left: 20px
+		flex: 0 0 210px
+		line-height: 1.5
+		text-align: left
+		.handle-text
+			font-size: 14px
+			font-weight: 500
+			span
+				color: #4665FE
+		.format-text
+			margin-top: 10px
+			font-size: 12px
+			font-weight: 500
+			color: #999999
+
+.slot-contact-pop
+	.ivu-poptip-inner
+		background-color: #E3EEFF
+
+	&.ivu-poptip-popper[x-placement^="left"]
+		.ivu-poptip-arrow:after
+			border-left-color: #E3EEFF
+
+	&.ivu-poptip-popper[x-placement^="right"]
+		.ivu-poptip-arrow:after
+			border-right-color: #E3EEFF
+
+.slot-api-pop
+	.ivu-poptip-body-content
+		height: 200px
+
+	&.ivu-poptip-popper[x-placement^="bottom-end"]
+		.ivu-poptip-arrow:after
+			border-bottom-color: #E3EEFF
+
+.ivu-select-multiple
+	.ivu-tag
+		.ivu-tag-text
+			max-width: 50px
+	.ivu-select-item-selected
+		&:after
+			right: 0px
+.ivu-select-visible.ivu-select-multiple
+	input[value] + div
+		.ivu-select-input
+			width: 30px !important
+			
+// 自定义列的样式
+.column_content
+	//padding-left: 22px
+
+	.col_detail
+		margin-top: 30px
+
+	.col_title
+		font-size: 14px
+		color: #333333
+
+	.optional_detail
+		padding-right: 10px
+
+	.check_title
+		padding: 15px 0px 8px
+		border-bottom: 1px solid #EBEBEB
+
+	.option_check
+		margin-top: 10px
+		color: #333333
+		width 114px
+		margin-right 0px
+		font-size 12px
+
+		.ivu-checkbox-checked .ivu-checkbox-inner
+			border-color: #465CFE
+			background: #465CFE
+
+		.ivu-checkbox-checked .ivu-checkbox-inner:after
+			border-color: #ffffff
+
+		&.ivu-checkbox-wrapper-checked
+			color: #465CFE
+			width 114px
+
+	.select_con
+		max-height: 450px
+		overflow: auto
+
+		.ivu-tag
+			width: 155px
+			display: flex
+			justify-content: space-between
+			height: 22px
+			line-height: 22px
+			background: #f2f2f2
+			border: 0px
+			color: #333333
+			margin-top: 10px
+
+			&:hover
+				background: #F2F4FF
+
+			.ivu-tag-text
+				color #465CFE
+
+			.ivu-tag .ivu-icon-ios-close
+				color #465CFE
+
+		.ivu-icon-ios-close
+			top: 6px
+
+.data-nav-tab
+	background-color: #F1F1F1
+	font-size: 0px
+
+	.tab-list
+		padding: 0 20px
+		display: inline-block
+		height: 35px
+		line-height: 35px
+		font-size: 16px
+		cursor: pointer
+
+		&.active
+			background-color: #FFF
+			color: #4665FE
+
+		.small-tips
+			font-size: 13px
+
+.detail-save-card
+	margin-top: 10px
+	padding: 15px 25px
+	background-color: #FFF
+	border-radius: 4px
+
+	.detail-save-center
+		text-align: right
+
+		button
+			margin-left: 7px
+
+.batch-line
+	margin 10px 0 15px
+	background: #FAFAFA
+	border: 1px solid #E6E6E6
+	border-radius: 4px
+	padding-left: 15px
+
+	.batch-handle
+		font-size: 0px
+
+		span
+			vertical-align middle
+			font-size: 14px
+
+	.batch-icon
+		margin-right: 4px
+		display: inline-block
+		vertical-align: middle
+		width: 16px
+		height: 16px
+		background-repeat: no-repeat
+		background-position: 0 0
+		background-size: cover
+
+	.batch-item
+		height: 32px
+		line-height 32px
+		display inline-block
+		vertical-align: middle
+		cursor pointer
+		margin-right: 20px
+
+		.play
+			background-image: url('~@/assets/image/icon/kaiqi_no.png')
+
+		.stop
+			background-image: url('~@/assets/image/icon/stop_no.png')
+
+		.freq
+			background-image: url('~@/assets/image/icon/freq_no.png')
+
+		.money
+			background-image: url('~@/assets/image/icon/money_no.png')
+
+		&:hover
+			color: #465CFE
+
+			.play
+				background-image: url('~@/assets/image/icon/kaiqi_sel.png')
+
+			.stop
+				background-image: url('~@/assets/image/icon/stop_sel.png')
+
+			.freq
+				background-image: url('~@/assets/image/icon/freq_sel.png')
+
+			.money
+				background-image: url('~@/assets/image/icon/money_sel.png')
+
+	.batch-close
+		width: 32px
+		height: 32px
+		line-height: 32px
+		text-align: center
+		font-size 10px
+		cursor: pointer
+
+.batch-custom-poptip
+	.ivu-poptip-body
+		padding: 16px
+
+	.icon-why
+		color: #FF9900
+
+	.pop-text
+		margin: 0 6px
+
+	button
+		margin-left: 7px
+
+.ivu-tooltip-popper
+	.ivu-tooltip-inner
+		max-width: 300px
+		
+.ivu-select-multiple
+	.ivu-tag
+		max-width: 50%
+
+.mobile-card
+	width: 244px
+	height: 416px
+	margin: 0 auto
+	padding: 23px 29px 39px 15px
+	background-image: url('~@/assets/image/ad/mobile.png')
+
+	.mobile-center
+		font-size: 0px
+		overflow: hidden
+		border-radius: 8px
+
+	img
+		vertical-align: top
+		width: 100%
+		height: 354px

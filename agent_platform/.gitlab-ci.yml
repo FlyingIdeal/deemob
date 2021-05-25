@@ -1,0 +1,284 @@
+# 官方文档：https://docs.gitlab.com/ee/ci/yaml/
+stages:
+  - build
+  - docker_build
+  - deploy_dev
+  - deploy_test
+  - deploy_gray
+  - deploy_prod
+  - rdeploy
+
+variables:
+  MSHK_RELEASE_NAME: agent_platform
+  DEPLOY_VERSION: latest
+  #IMAGE_PROD: ${MSHK_REGISTRY_PROD}/miage/${CI_PROJECT_NAME}
+  MSHK_REGISTRY_PROD: registry-vpc.cn-beijing.aliyuncs.com
+  COM_USER: docker-images@deemob
+  COM_PASSWORD: docker-images
+  IMAGE_PROD: ${MSHK_REGISTRY_PROD}/deemob/${CI_PROJECT_NAME}
+
+##############################
+#   before_script
+##############################
+before_script:
+  - IMAGE_TAG=${CI_BUILD_TAG}
+  - echo ${IMAGE_TAG}
+  - echo ${IMAGE_TEST}
+
+##############################
+# build Build_mozi
+##############################
+build:BuildNpmRun-dev:
+  stage: build
+  image: docker.io/idoall/node:10.15.3-alpine
+  cache:
+    paths:
+      - node_modules
+    key: $CI_PROJECT_ID
+  only:
+    - /^dev_.*$/
+  except:
+    - branches
+  tags:
+    - build
+  script:
+    - rm -r -f ./dist/
+    - npm set registry http://nexus.deemob.com/repository/npm-taobao-group/
+    - npm install
+    - npm run build:dev
+  artifacts:
+    paths: [ './dist' ]
+
+##############################
+# build Build_mozi
+##############################
+build:BuildNpmRun-test:
+  stage: build
+  image: docker.io/idoall/node:10.15.3-alpine
+  cache:
+    paths:
+      - node_modules
+    key: $CI_PROJECT_ID
+  only:
+    - /^test_.*$/
+  except:
+    - branches
+  tags:
+    - build
+  script:
+    - rm -r -f ./dist/
+    - npm set registry http://nexus.deemob.com/repository/npm-taobao-group/
+    - npm install
+    - npm run build:test
+  artifacts:
+    paths: [ './dist' ]
+
+##############################
+# build Build_mozi
+##############################
+build:BuildNpmRun-gray:
+  stage: build
+  image: docker.io/idoall/node:10.15.3-alpine
+  cache:
+    paths:
+      - node_modules
+    key: $CI_PROJECT_ID
+  only:
+    - /^gray_.*$/
+  except:
+    - branches
+  tags:
+    - build
+  script:
+    - rm -r -f ./dist/
+    - npm set registry http://nexus.deemob.com/repository/npm-taobao-group/
+    - npm install
+    - npm run build:gray
+  artifacts:
+    paths: [ './dist' ]
+
+##############################
+# build Build_mozi
+##############################
+build:BuildNpmRun-prod:
+  stage: build
+  image: docker.io/idoall/node:10.15.3-alpine
+  cache:
+    paths:
+      - node_modules
+    key: $CI_PROJECT_ID
+  only:
+    - /^release_.*$/
+  except:
+    - branches
+  tags:
+    - build
+  script:
+    - rm -r -f ./dist/
+    - npm set registry http://nexus.deemob.com/repository/npm-taobao-group/
+    - npm install
+    - npm run build:pro
+  artifacts:
+    paths: [ './dist' ]
+
+##############################
+# build gofile && build image & push image
+##############################
+build:BuildDocker:
+  stage: docker_build
+  tags:
+    - build
+  only:
+    - /^dev_.*$/
+    - /^test_.*$/
+    - /^gray_.*$/
+    - /^release_.*$/
+  except:
+    - branches
+  dependencies: [ 'build:BuildNpmRun-dev', 'build:BuildNpmRun-test', 'build:BuildNpmRun-gray', 'build:BuildNpmRun-prod' ]
+  services:
+    - name: docker:dind
+      #command: ["--insecure-registry=registry.cn-beijing.aliyuncs.com"]
+  variables:
+    DOCKER_DRIVER: overlay
+    DOCKER_TLS_CERTDIR: ''
+    DOCKER_HOST: tcp://172.16.6.183:2375
+  script:
+    - sh ./bin/ci.build.image.sh ${IMAGE_PROD} ${IMAGE_TAG} ${MSHK_RELEASE_NAME}
+    - docker images
+    - docker login -u ${COM_USER} -p ${COM_PASSWORD} ${MSHK_REGISTRY_PROD}
+    - sh ./bin/ci.push.image.sh ${IMAGE_PROD} ${IMAGE_TAG}
+    - sh ./bin/ci.rm.image.sh ${IMAGE_PROD} ${IMAGE_TAG}
+
+##############################
+#   发布 -  开发环境
+##############################
+DeployProd:deploy_dev_vue:
+  stage: deploy_dev
+  image: hsh47/k8s-kubectl:staging
+  only:
+    - /^dev_.*$/
+  except:
+    - branches
+  tags:
+    - deploy-test
+  script:
+    - echo $KUBE_CONFIG |base64 -d > /root/.kube/config
+    - kubectl get pods
+    - kubectl set image deployment/dev-dsp-agent  dev-dsp-agent=${IMAGE_PROD}:${IMAGE_TAG}
+    - kubectl rollout history deployment dev-dsp-agent
+
+##############################
+#   发布 -  测试环境
+##############################
+DeployProd:deploy_test_vue:
+  stage: deploy_test
+  image: hsh47/k8s-kubectl:staging
+  only:
+    - /^test_.*$/
+  except:
+    - branches
+  tags:
+    - deploy-test
+  script:
+    - echo $KUBE_CONFIG |base64 -d > /root/.kube/config
+    - kubectl get pods -n test-env
+    - kubectl set image deployment/test-dsp-agent  test-dsp-agent=${IMAGE_PROD}:${IMAGE_TAG} -n test-env
+    - kubectl rollout history deployment test-dsp-agent -n test-env
+    - wget -O /tmp/git_ci_ding  http://file.deemob.com/shell/git_ci_ding && chmod a+x /tmp/git_ci_ding &&/tmp/git_ci_ding -p ${MSHK_RELEASE_NAME} -e 测试环境 -d "${CI_COMMIT_MESSAGE}" -u ${GITLAB_USER_NAME} -v ${CI_BUILD_TAG}
+
+##############################
+#   发布 -  灰度环境
+##############################
+DeployProd:deploy_gray_vue:
+  stage: deploy_gray
+  image: hsh47/k8s-kubectl:staging
+  only:
+    - /^gray_.*$/
+  #when: manual
+  except:
+    - branches
+  tags:
+    - deploy-test
+  script:
+    - echo $KUBE_CONFIG |base64 -d > /root/.kube/config
+    - kubectl get pods -n gray-env
+    - kubectl set image deployment/gray-dsp-agent  gray-dsp-agent=${IMAGE_PROD}:${IMAGE_TAG} -n gray-env
+    - kubectl rollout history deployment gray-dsp-agent -n gray-env
+    - wget -O /tmp/git_ci_ding  http://file.deemob.com/shell/git_ci_ding && chmod a+x /tmp/git_ci_ding &&/tmp/git_ci_ding -p ${MSHK_RELEASE_NAME} -e 灰度环境 -d "${CI_COMMIT_MESSAGE}" -u ${GITLAB_USER_NAME} -v ${CI_BUILD_TAG}
+
+##############################
+#   发布 -  生产环境
+##############################
+DeployProd:deploy_prod_vue:
+  stage: deploy_prod
+  image: registry-vpc.cn-beijing.aliyuncs.com/deemob/ansible:centos7
+  only:
+    - /^release_.*$/
+  #when: manual
+  except:
+    - branches
+  tags:
+    - deploy-test
+  script:
+    - timedate=$(date "+%Y%m%d%H%M%S")
+    - echo ${timedate}-${MSHK_RELEASE_NAME}
+    - mkdir -p ${timedate}-${MSHK_RELEASE_NAME}/
+    - cp -R ./dist/* ./${timedate}-${MSHK_RELEASE_NAME}/
+    - tar -cjf ${timedate}-${MSHK_RELEASE_NAME}.tar.bz2 ./${timedate}-${MSHK_RELEASE_NAME}/
+    - ansible prod_cms -m copy -a "src=${timedate}-${MSHK_RELEASE_NAME}.tar.bz2 dest=/data/wwwapps/HistoryPackage/"
+    - ansible prod_cms -m shell -a "echo ${timedate}-${MSHK_RELEASE_NAME} >> /data/wwwapps/HistoryPackage/version.log && cd /data/wwwapps/HistoryPackage/ && tar xf ${timedate}-${MSHK_RELEASE_NAME}.tar.bz2 && cd .. && rm -f ${MSHK_RELEASE_NAME} \
+      && ln -s ./HistoryPackage/${timedate}-${MSHK_RELEASE_NAME} ${MSHK_RELEASE_NAME} && rm -f HistoryPackage/*${MSHK_RELEASE_NAME}.tar.bz2"
+    - wget -O /tmp/git_ci_ding  http://file.deemob.com/shell/git_ci_ding && chmod a+x /tmp/git_ci_ding &&/tmp/git_ci_ding -p ${MSHK_RELEASE_NAME} -e 生产环境 -d "${CI_COMMIT_MESSAGE}" -u ${GITLAB_USER_NAME} -v ${CI_BUILD_TAG}
+
+DeployProd:k8s_deploy_prod_vue:
+  stage: deploy_prod
+  image: hsh47/k8s-kubectl:staging
+  only:
+    - /^release_.*$/
+  #when: manual
+  except:
+    - branches
+  tags:
+    - deploy-test
+  script:
+    - echo $KUBE_CONFIG |base64 -d > /root/.kube/config
+    - kubectl get pods -n prod-env
+    - kubectl set image deployment/dsp-agent  dsp-agent=${IMAGE_PROD}:${IMAGE_TAG} -n prod-env
+    - kubectl rollout history deployment dsp-agent -n prod-env
+    #- wget -O /tmp/git_ci_ding  http://file.deemob.com/shell/git_ci_ding && chmod a+x /tmp/git_ci_ding &&/tmp/git_ci_ding -p ${MSHK_RELEASE_NAME} -e 生产环境 -d "${CI_COMMIT_MESSAGE}" -u ${GITLAB_USER_NAME} -v ${CI_BUILD_TAG}
+
+
+##############################
+#   回滚 -  灰度环境
+##############################
+RollBackDeployProd:rdeploy_gray:
+  stage: rdeploy
+  image: registry-vpc.cn-beijing.aliyuncs.com/deemob/ansible:centos7
+  only:
+    - /^gray_.*$/
+  when: manual
+  except:
+    - branches
+  tags:
+    - deploy-test
+  script:
+    - ansible gray_cms -m shell -a 'LodVersion=`cat /data/wwwapps/HistoryPackage/version.log|grep dsp_admin|tail -n 2|head -n 1` && rm -f /data/wwwapps/dsp_admin \
+      && cd /data/wwwapps/ && ln -s ./HistoryPackage/${LodVersion}  dsp_admin'
+
+##############################
+#   回滚 -  正式环境
+##############################
+RollBackDeployProd:rdeploy_pord:
+  stage: rdeploy
+  image: registry-vpc.cn-beijing.aliyuncs.com/deemob/ansible:centos7
+  only:
+    - /^release_.*$/
+  when: manual
+  except:
+    - branches
+  tags:
+    - deploy-test
+  script:
+    - ansible prod_cms -m shell -a 'LodVersion=`cat /data/wwwapps/HistoryPackage/version.log|grep agent_platform|tail -n 2|head -n 1` && rm -f /data/wwwapps/agent_platform \
+      && cd /data/wwwapps/ && ln -s ./HistoryPackage/${LodVersion}  agent_platform'
