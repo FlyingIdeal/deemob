@@ -1,0 +1,140 @@
+.login {
+  width: 100%;
+  height: 100vh;
+  min-width: 1200px;
+  background: url('~@/assets/image/login/bg_deng.jpg') no-repeat center center;
+  position: relative;
+  background-size: 100% 100%;
+  .login_img{
+    position: absolute;
+    img{
+      width: 200px;
+    }
+  }
+  .login_header{
+    text-align: center;
+    font-size:30px;
+    font-family:Source Han Sans CN;
+    font-weight:bold;
+    color:#29e6ff;
+    line-height:75px;
+    position: relative;
+    img{
+      width: 100%;
+      position: absolute;
+      top:40px;
+      left:0px;
+    }
+  }
+  .login_matter{
+    width: 100%;
+    height: calc(100vh - 75px);
+    background: url('~@/assets/image/login/bg2.png') no-repeat center center;
+    background-size cover
+  }
+  .deng_img{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    right:50%;
+    transform: translate(-520px,-50%);
+    img{
+      width: 470px;
+    }
+  }
+  /deep/ .deng_content{
+    position: absolute;
+    width: 430px;
+    height: 450px;
+    background: url('~@/assets/image/login/deng_bg.png') no-repeat center;
+    background-size: 100% 100%;
+    top:50%;
+    left: 50%;
+    right:50%;
+    transform: translate(80px,-50%);
+    .login_icon{
+      text-align: center;
+      margin-top: 65px;
+    }
+    .login-content{
+      width: 70%;
+      margin: 5% 15% 6%;
+      .login_detail{
+        .ivu-input{
+          background: rgba(6, 135, 205, 0.4);
+          border-top: 1px solid #0BA1F8 !important;
+          border-bottom: 1px solid #0BA1F8 !important;
+          border-right: 1px solid #0BA1F8 !important;
+          border-radius: 0px;
+          color: #ffffff;
+          position: relative;
+          border-left: 0px !important;
+          margin-left 0px
+        }
+        .ivu-input:focus{
+          border: 1px solid #0BA1F8;
+        }
+        .ivu-input:hover{
+          border: 1px solid #0BA1F8;
+        }
+        //input:focus{
+        //  background: rgba(6, 135, 205, 0.4);
+        //  border: 1px solid #0BA1F8;
+        //  box-shadow: inset 0 0 0 1000px #FFFFFF!important;
+        //}
+        .ivu-input:-webkit-autofill{
+          -webkit-box-shadow: 0 0 0 30px rgb(14, 89, 162) inset;
+          -webkit-text-fill-color:#ffffff;
+        }
+        .ivu-input:focus{
+          border: 1px solid #0BA1F8;
+        }
+        .ivu-input-group-prepend{
+          background: rgba(6, 135, 205, 0.4);
+          border-top: 1px solid #0BA1F8;
+          border-bottom: 1px solid #0BA1F8;
+          border-left: 1px solid #0BA1F8;
+          border-right 1px solid transparent
+          padding: 4px;
+        }
+        .ivu-input-group-large > .ivu-input-group-append {
+          padding: 0px;
+        }
+        .icon{
+          background: transparent;
+          width: 30px;
+          height: 30px;
+          color #0BA1F8
+          font-size 18px
+          text-align center
+          line-height 30px
+          margin-right -1px
+        }
+        .captcha-img{
+          display: inline-block
+          vertical-align: top
+          text-align: right
+          width: 80px
+          height: 30px
+          img{
+            width: 100%
+            height: 100%
+          }
+        }
+        button{
+          background: #5384D9;
+          width 100%
+          height 40px
+          color: #ffffff;
+          border-color: #5384D9;
+          border-radius: 0px;
+          font-size: 16px;
+          //font-weight: bold;
+
+        }
+      }
+
+    }
+
+  }
+}

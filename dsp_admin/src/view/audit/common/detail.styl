@@ -1,0 +1,172 @@
+.page-main {
+  .page-title {
+    font-size 18px
+    color #333333
+    height 45px
+    line-height 45px
+    padding-bottom 10px
+    border-bottom 1px solid #EBEBEB
+  }
+
+  .content {
+    margin-top 25px
+    color #42444C !important
+    font-size 14px
+    min-height: calc(100vh - 200px);
+    height auto
+
+    .audit_content {
+      border-bottom 1px solid #F2F2F2
+      margin 30px 0px
+
+      .form_content {
+        display flex
+        justify-content space-between
+        flex-wrap: wrap;
+        .accountForm {
+          width 50%
+          margin-bottom 4px
+          color #42444C
+          font-size 14px
+
+          .text {
+            width 90%
+            word-wrap: break-word;
+            word-break: break-all;
+          }
+        }
+      }
+
+      /deep/ textarea.ivu-input {
+        height 120px
+      }
+
+      .account_img {
+        width 150px
+        height 150px
+        line-height 100px
+        display inline-block
+        margin-right 20px
+        text-align center
+        background #eff1f5
+        position relative
+
+        &.account_video:before {
+          content: '';
+          width: 12px;
+          height: 135px;
+          position: absolute;
+          top: 0px;
+          left 0px
+          z-index 100
+          background: url("~@/assets/image/you.png");
+          background-size cover
+        }
+
+        &.account_video:after {
+          content: '';
+          width: 12px;
+          height: 135px;
+          position: absolute;
+          top: 0px;
+          right: 0px
+          z-index 100
+          background: url("~@/assets/image/you.png");
+          background-size cover
+
+        }
+
+        .imgs {
+          max-height 100%
+          max-width 100%
+          vertical-align middle
+        }
+
+        video {
+          max-height 100%
+          max-width 100%
+          vertical-align middle
+        }
+
+        .account_shade {
+          width 150px
+          height 150px
+          line-height 1.6 !important
+          position absolute
+          top 0px
+          background rgba(0, 0, 0, 0.5)
+          text-align center
+          z-index 101
+          color #ffffff
+
+          .blow {
+            position absolute
+            top: 50%
+            left 50%
+            transform translate(-50%, -50%)
+
+            .icon {
+              color #ffffff
+              font-size 20px
+              line-height 20px
+            }
+          }
+
+        }
+      }
+
+      /deep/ .form_table {
+        .ivu-table-header thead tr th {
+          padding 0px
+          background: #FAFAFA;
+        }
+      }
+    }
+
+  }
+
+  .see {
+    /deep/ .ivu-form-item-label {
+      color #999999
+    }
+  }
+}
+.native-model {
+  .img_content {
+    width 400px
+    height 400px
+    margin 0 auto
+    line-height 400px
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-direction: column;
+
+    img, video {
+      text-align center
+      max-width 400px
+      max-height 400px
+    }
+  }
+
+  /deep/ .ivu-modal-footer {
+    border 0px;
+    padding 0px
+  }
+}
+
+.create_save {
+  height: 64px;
+  line-height 64px
+  background: #FFFFFF;
+  box-shadow: 0px 3px 5px 0px rgba(24, 45, 66, 0.05);
+  border-radius: 4px;
+  margin-top 12px
+  text-align right
+  padding-right 25px
+
+  button {
+    margin-left: 20px
+  }
+}
