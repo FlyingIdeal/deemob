@@ -1,7 +1,7 @@
 {
 	"name": "amin",
-	"version": "2.2.0",
-	"description": "一键加群/拨打电话/SDK配置",
+	"version": "2.3.0",
+	"description": "媒体结算账单",
 	"author": "聚量传媒",
 	"private": true,
 	"scripts": {

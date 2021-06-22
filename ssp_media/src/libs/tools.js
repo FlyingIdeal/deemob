@@ -392,3 +392,24 @@ export function formatDate(time, fmt) {
 export function randomNumber(lower, upper) {
     return Math.floor(Math.random() * (upper - lower)) + lower
 }
+
+
+/**
+ * [number2Thousand 数字转千分位]
+ * 如果是整数，则直接返回千分位  例如 12345 =》 12,345
+ * 如果带有小数点，则保留两位数字  例如12345.12 =》 12,345.12
+ * @param  {[type]} num [description]
+ * @return {[type]}     [description]
+ */
+export function number2Thousand(num) {
+    // 非零/ 正负无穷
+    if (!num || num === Infinity || num === -Infinity) {
+        return 0
+    } else {
+        if (Number.isInteger(num)) {
+            return parseInt(num).toLocaleString() // 数字
+        } else {
+            return num.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') // 字符串
+        }
+    }
+}

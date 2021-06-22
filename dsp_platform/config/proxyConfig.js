@@ -1,6 +1,6 @@
 module.exports = {
     '/api/v1': { // 普通接口 开发
-        target: 'http://adv.test.deemob.com/api/v1', // 代理到gray环境
+        target: 'http://adv.dev.deemob.com/api/v1', // 代理到gray环境
         // target: 'https://adv.gray.deemob.com/api/v1', // 代理到gray环境
         changeOrigin: true,
         pathRewrite: {
@@ -8,7 +8,7 @@ module.exports = {
         }
     },
     '/uc_api/v1': { // 用户接口 - 代理
-        target: 'http://adv.test.deemob.com/uc_api/v1',
+        target: 'http://adv.dev.deemob.com/uc_api/v1',
         // target: 'https://adv.gray.deemob.com/uc_api/v1',
         changeOrigin: true,
         pathRewrite: {

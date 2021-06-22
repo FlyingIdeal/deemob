@@ -17,10 +17,10 @@
       <div class="cover" :style="{width: widthVal+'px', height: heightVal+'px',lineHeight:heightVal+'px' }" :class="{'is-edit': disEdit}">
         <div class="cover_content" :style="{width: widthVal+'px', height: heightVal+'px'}">
           <div class="left">
-            <i class="icon icon-radius-up" @click="removeUpload"/>
+            <i class="icon icon-upload" @click="removeUpload"/>
           </div>
           <div class="right">
-            <i class="icon icon-zoomup" @click="modelShow"/>
+            <i class="icon icon-zoom-up" @click="modelShow"/>
           </div>
         </div>
       </div>

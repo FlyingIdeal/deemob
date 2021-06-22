@@ -28,13 +28,13 @@ export default {
 	 */
 	APIUrl: {
 		dev: { // 开发环境 - 切换到开发环境
-			baseUrl: 'http://adv.test.deemob.com', // 基础请求接口
-			userBaseUrl: 'http://user.test.deemob.com', // dsp用户中心 - 开发环境
-			mediaComUrl: 'http://media.test.deemob.com', // 平台公告（公用接口）-从-->媒体平台 --获取
-			adminComUrl: 'http://admin.test.deemob.com', // 平台公告（公用接口）-从-->管理平台 --获取
-			advComUrl: 'http://adv.test.deemob.com', // dsp广告主平台
-			operateComUrl: 'http://operate.test.deemob.com', // dsp广告主管理
-			agentComUrl: 'http://agent.test.deemob.com' // dsp代理商管理
+			baseUrl: 'http://adv.dev.deemob.com', // 基础请求接口
+			userBaseUrl: 'http://user.dev.deemob.com', // dsp用户中心 - 开发环境
+			mediaComUrl: 'http://media.dev.deemob.com', // 平台公告（公用接口）-从-->媒体平台 --获取
+			adminComUrl: 'http://admin.dev.deemob.com', // 平台公告（公用接口）-从-->管理平台 --获取
+			advComUrl: 'http://adv.dev.deemob.com', // dsp广告主平台
+			operateComUrl: 'http://operate.dev.deemob.com', // dsp广告主管理
+			agentComUrl: 'http://agent.dev.deemob.com' // dsp代理商管理
 		},
 		// dev: { // 开发环境 - 切换到灰度环境
 		// 	baseUrl: 'https://adv.gray.deemob.com', // 基础请求接口

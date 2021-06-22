@@ -77,6 +77,14 @@
             <FormItem class="appForm" label="联系人手机号码">
               <p class="text">{{ ruleForm.dev_phone || '无'}} </p>
             </FormItem>
+			  <FormItem class="appForm" label="合作主体">
+				  <p class="text" v-if="ruleForm.cooperation_company">{{ ruleForm.cooperation_company === 1 ? '聚量' : '鼎广'}} </p>
+				  <p v-else>-</p>
+			  </FormItem>
+			  <FormItem label="合同有效期" class="appForm">
+				  <p v-if="ruleForm.cooperation_since && ruleForm.cooperation_until">{{ruleForm.cooperation_since}} ~ {{ruleForm.cooperation_until}}</p>
+				  <p v-else>-</p>
+			  </FormItem>
             <p class="app_title">财务信息</p>
             <FormItem class="appForm" label="收款方">
               <p class="text">{{ ruleForm.company_name || '无'}} </p>
@@ -96,6 +104,23 @@
             <FormItem class="appForm" label="银行账号">
               <p class="text">{{ financeDate.bank_id_card || '无'}} </p>
             </FormItem>
+			  <FormItem class="appForm" label="发票类型">
+				  <p v-if="ruleForm.invoice_type">{{ruleForm.invoice_type === 1 ? '增值税普通发票' :ruleForm.invoice_type === 2 ? '增值税专用发票（3%）' : '增值税专用发票（6%）' }}</p>
+				  <p v-else>-</p>
+			  </FormItem>
+			  <FormItem class="appForm" label="发票项目">
+				  <p v-if="ruleForm.invoice_project">{{ruleForm.invoice_project === 1 ? '广告发布费' : '非广告发布费的其他项目'}}</p>
+				  <p v-else>-</p>
+			  </FormItem>
+			  <FormItem class="appForm" label="补扣额外税税率">
+				  <p v-if="ruleForm.other_tax_rate && ruleForm.is_cut_other_tax===1">{{getNumberFloat(ruleForm.other_tax_rate)}}%</p>
+				  <p v-else-if="ruleForm.is_cut_other_tax===2">0%</p>
+				  <p v-else>-</p>
+			  </FormItem>
+			  <FormItem class="appForm" label="结算周期">
+				  <p v-if="ruleForm.settlement_period">{{ruleForm.settlement_period === 1 ? '预付' : ruleForm.settlement_period === 2 ? '次月月底'  : ruleForm.settlement_period === 3 ? '次次25日前' : '次次月底'}}</p>
+				  <p v-else>-</p>
+			  </FormItem>
           </Form>
         </div>
       </div>
@@ -195,6 +220,18 @@
           }
         })
       },
+		// 转换成千分位，保留两位小数
+		getNumberFloat(num) {
+			if (!num || num === Infinity || num === -Infinity) {
+				return 0
+			} else {
+				if (Number.isInteger(num)) {
+					return parseInt(num).toLocaleString() // 数字
+				} else {
+					return num.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') // 字符串
+				}
+			}
+		},
       enter(index) {
         this.seen = true
         this.current = index

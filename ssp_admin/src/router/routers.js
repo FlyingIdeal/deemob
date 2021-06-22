@@ -427,6 +427,29 @@ export const asyncRouterMap = [
 		]
 	},
 	{
+		path: '/finance', // 财务中心
+		name: 'finance',
+		component: Main,
+		redirect: '/finance/manage/index',
+		meta: {
+			title: '财务中心',
+			redirectTo: 'finance-manage',
+			icon: 'left-bar-icon material-tag'
+		},
+		children: [
+			{
+				path: '/finance/manage/index',
+				name: 'finance-manage',
+				meta: {
+					title: '财务中心-媒体结算账单',
+					isShowAccess: true,
+					inPageAccess: {'viewIndex': '首页','viewMedia': '查看媒体', 'viewFill': '查看账单', 'uploadFill': '上传回单', 'downloadFill': '下载回单', 'writeFill': '填写回寄单号', 'remit': '打款', 'checkFill': '核对结算材料', 'modify' : '修正', 'trial' : '初审', 'lastTrial': '终审' } // 页面内权限
+				},
+				component: resolve => require(['@/view/finance/manage/index'], resolve)
+			}
+		]
+	},
+	{
 		path: '/tag', // 人群标签
 		name: 'tag-manage',
 		component: Main,

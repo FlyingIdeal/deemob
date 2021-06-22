@@ -5,7 +5,7 @@
       <div class="col_detail">
         <div class="media_table">
           <Row>
-            <Col :span="16">
+            <Col :span="17">
               <div class="col_title">可选择列</div>
               <div class="optional_detail">
                 <div class="checkout_content">
@@ -20,7 +20,7 @@
                 </div>
               </div>
             </Col>
-            <Col :span="8">
+            <Col :span="7">
               <div class="col_title">已选择列</div>
               <div class="select_con">
                 <Tag v-for="(item, index) in hasCheckArr" :key="`${item}_${index}`" :name="item" closable

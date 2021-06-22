@@ -21,6 +21,7 @@ class HttpRequest {
         return config
     }
     interceptors(instance, options) {
+
         // 请求拦截
         instance.interceptors.request.use(config => {
             return config

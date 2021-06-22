@@ -209,31 +209,12 @@ DeployProd:gray_vue_admin:
 ##############################
 #   发布 -  生产环境
 ##############################
-DeployProd:prod_vue_admin:
-  stage: deploy_vue_admin
-  image: registry-vpc.cn-beijing.aliyuncs.com/deemob/ansible:centos7
-  only:
-    - /^release_.*$/
-  when: manual
-  tags:
-    - deploy-test
-  script:
-    - timedate=$(date "+%Y%m%d%H%M%S")
-    - echo ${timedate}-${MSHK_RELEASE_NAME}
-    - mkdir -p ${timedate}-${MSHK_RELEASE_NAME}/
-    - cp -R ./dist/* ./${timedate}-${MSHK_RELEASE_NAME}/
-    - tar -cjf ${timedate}-${MSHK_RELEASE_NAME}.tar.bz2 ./${timedate}-${MSHK_RELEASE_NAME}/
-    - ansible prod_cms -m copy -a "src=${timedate}-${MSHK_RELEASE_NAME}.tar.bz2 dest=/data/wwwapps/HistoryPackage/"
-    - ansible prod_cms -m shell -a "echo ${timedate}-${MSHK_RELEASE_NAME} >> /data/wwwapps/HistoryPackage/version.log && cd /data/wwwapps/HistoryPackage/ && tar xf ${timedate}-${MSHK_RELEASE_NAME}.tar.bz2 && cd .. && rm -f ${MSHK_RELEASE_NAME} \
-      && ln -s ./HistoryPackage/${timedate}-${MSHK_RELEASE_NAME} ${MSHK_RELEASE_NAME} && rm -f HistoryPackage/*${MSHK_RELEASE_NAME}.tar.bz2"
-    - wget -O /tmp/git_ci_ding  http://file.deemob.com/shell/git_ci_ding && chmod a+x /tmp/git_ci_ding &&/tmp/git_ci_ding -p ${MSHK_RELEASE_NAME} -e 生产环境 -d "${CI_COMMIT_MESSAGE}" -u ${GITLAB_USER_NAME} -v ${CI_BUILD_TAG}
-
 DeployProd:k8s-prod_vue_admin:
   stage: deploy_gray_vue_admin
   image: hsh47/k8s-kubectl:staging
   only:
     - /^release_.*$/
-  #when: manual
+  when: manual
   tags:
     - deploy-test
   script:
@@ -241,7 +222,7 @@ DeployProd:k8s-prod_vue_admin:
     - kubectl get pods -n prod-env
     - kubectl set image deployment/vue-admin vue-admin=${IMAGE_PROD}:${IMAGE_TAG} -n prod-env
     - kubectl rollout history deployment vue-admin -n prod-env
-    #- wget -O /tmp/git_ci_ding  http://file.deemob.com/shell/git_ci_ding && chmod a+x /tmp/git_ci_ding &&/tmp/git_ci_ding -p ${MSHK_RELEASE_NAME} -e 生产环境 -d "${CI_COMMIT_MESSAGE}" -u ${GITLAB_USER_NAME} -v ${CI_BUILD_TAG}
+    - wget -O /tmp/git_ci_ding  http://file.deemob.com/shell/git_ci_ding && chmod a+x /tmp/git_ci_ding &&/tmp/git_ci_ding -p ${MSHK_RELEASE_NAME} -e 生产环境 -d "${CI_COMMIT_MESSAGE}" -u ${GITLAB_USER_NAME} -v ${CI_BUILD_TAG}
 
 
 ##############################
